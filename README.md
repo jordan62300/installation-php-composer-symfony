@@ -76,14 +76,16 @@ Vous pouvez maintenant acceder a la page localhost:8000/blog
 
 #### Changer la page d'accueil du projet
 
-Dans le controller que vous venez de creer ajoutez : 
+Dans le controller que vous venez de creer ajoutez cette ligne de code 
 
->   /**
+```PHP
+  /**
  * @Route("/", name="home")
  */
 public function home() {
     return $this->render('blog/home.html.twig');
 }
+```
 
 
 
