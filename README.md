@@ -107,6 +107,21 @@ Pour mettre une condition :
 {% endif }
 <p> Tu es mineur </p>
 {% endif %}
+```
+
+#### Bootstrap avec twig
+
+Pour eviter de devoir mettre le lien de bootstrap dans chaque fichier twig , le fichier : base.html.twig permert de transmettre une information aux autres fichier .twig 
+
+
+Pour rajouter boostrap mettez le lien de bootstrap dans le fichier base.html.twig
+Vous devriez obtenir :
+
+```Twig
+<title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+        {% block stylesheets %}{% endblock %}
+```
 
 
 
