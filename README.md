@@ -188,6 +188,21 @@ Puis utilisez la commande :
 
 > php bin/console doctrine:database:create
 
+#### Creation d'une table
+
+Pour creer une table tapez dans la console : 
+
+> php bin/console make:entity
+
+puis entrez son nom , exemple : Article
+
+Cela creer deux fichier :
+
+* src/Entity/Article.php qui représente notre table
+* src/Repository/ArticleRepository.php qui permert de faire des selections sur nos tables
+
+
+
 
 
 
