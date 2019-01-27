@@ -1,4 +1,4 @@
-###  Php , Composer et Symfony sous windows
+#  Php , Composer et Symfony sous windows
 
 ##  Pour installer php :
 
@@ -33,6 +33,27 @@ https://getcomposer.org/
 Suivre l'installation et verifier si Composer est installé avec la commande 
 
 > composer -V
+
+## Pour installer symfony
+
+Se rendre dans un projet php et taper 
+
+> composer create-project symfony/website-skeleton demo
+
+
+Pour installer un serveur personnalisé 
+
+
+>composer require server --dev
+
+
+Pour lancer le serveur
+
+> php bin/console server:run
+
+## utilisation de symfony
+
+
 
 
 
