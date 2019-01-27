@@ -109,6 +109,22 @@ Pour mettre une condition :
 {% endif %}
 ```
 
+Puis renseignez la function présente dans le fichier BlogController avec les variables et leurs valeurs
+
+```PHP
+  /**
+ * @Route("/", name="home")
+ */
+public function home() {
+    return $this->render('blog/home.html.twig',[
+        'title' => 'Bienvenue mes amis',
+        'age' => 17
+    ]);
+}
+```
+
+
+
 #### Bootstrap avec twig
 
 Pour eviter de devoir mettre le lien de bootstrap dans chaque fichier twig , le fichier : base.html.twig permert de transmettre une information aux autres fichier .twig 
@@ -138,8 +154,39 @@ exemple :
 {% endblock %}
 ```
 
+### Doctrine 
 
+Doctrin est l'ORM de symfony et permert de creer , modifier , supprimer , ajoutez des données etc dans nos tables 
 
+Les outils de Doctrine :
+
+* Entity : Représente une table (creation etc)
+* Manager : Permet de manipuler une ligne (insertion , supression etc)
+* Repository : Permet de faire des selections (faire des SELECT façon sql)
+
+Les migrations dans symfony :
+
+Elles permettent d'exporter nos bases de données en faisant tourner le script une fois
+
+Les fixtures dans symfony : 
+
+Ca permet d'ajouter des fausses données dans nos tables , permettant de travailler directement sur elle ( utile pour s'entrainer)
+
+#### Creation d'une BDD 
+
+Pour creer une BDD aller dans le fichier .env
+
+a l'intérieur trouvez la ligne : 
+
+> DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+
+et modifiez la avec vos login phpmyadmin : 
+
+> DATABASE_URL=mysql://root:@127.0.0.1:3306/blog
+
+Puis utilisez la commande : 
+
+> php bin/console doctrine:database:create
 
 
 
