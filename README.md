@@ -87,6 +87,28 @@ public function home() {
 }
 ```
 
+Puis creez un fichier home.html.twig dans le dossier blog se trouvant dans templates
+
+Vous pouvez maintenant modifier cette page avec du code html
+
+### Twig
+
+Pour afficher le contenue d'une variable dans une balise h1 :
+
+```Twig
+<h1>{{title}}</h1>
+```
+
+Pour mettre une condition : 
+
+```Twig
+{% if age > 18 %}
+<p> Tu es majeur </p>
+{% endif }
+<p> Tu es mineur </p>
+{% endif %}
+
+
 
 
 
