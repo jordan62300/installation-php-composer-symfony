@@ -4,81 +4,16 @@
 
 {% block body %}
 <section class="article">
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metada">Ecrit le 10/05/2018 à 19:00 dans la catégorie Politique</div>
+    {% for article in articles %}
+        <h2>{{ article.title }}</h2>
+        <div class="metada">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{article.createdAt | date('H:i') }} dans la catégorie Politique</div>
         <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa vitae quo eum debitis iste voluptatibus cum optio perspiciatis. Fugiat cum omnis commodi recusandae doloremque, nisi eaque neque maxime. Nisi, similique!
-                Odio, consequatur! Voluptas quisquam libero ipsam nulla optio fugit ratione voluptate odit architecto dignissimos perspiciatis, facilis consequuntur quam molestiae quos sapiente necessitatibus obcaecati blanditiis numquam nesciunt. Error itaque blanditiis soluta.
-                Earum ratione laboriosam culpa vel in dolorem aspernatur perspiciatis est sequi nesciunt atque quibusdam, eaque officiis ea sunt odio dolores porro corrupti a consequatur iure cumque aut sapiente! Vero, at?
-                Veritatis corrupti ipsam sint beatae hic, architecto optio mollitia modi accusantium, quasi perferendis repellendus incidunt, ex cumque voluptatum quaerat! Nemo, ratione voluptas accusamus optio voluptates facilis laboriosam illum impedit delectus?
-                Molestias et aliquam fuga aut quae totam odit dolor ut sapiente quod tempore amet, quaerat corrupti illo temporibus dolorem cum numquam, tempora facilis ex. Eos ab cupiditate nobis consequatur amet.
-                Amet quasi quam non consectetur ipsa, voluptatibus aliquam fugit nisi quas maiores odio doloribus nemo necessitatibus veritatis aperiam, quibusdam rem omnis voluptates animi veniam repellat! Nostrum suscipit perspiciatis quaerat odit!  
-            </p>
-            <p>
-                Dolores, laboriosam perferendis sunt quos nesciunt ipsam beatae earum enim, aliquid ipsa odio aperiam accusantium. Quae voluptates harum, quod dolor, porro repellendus cupiditate debitis quasi ratione corrupti necessitatibus doloremque sapiente!
-                Doloremque omnis quas quibusdam odit! Voluptate cum impedit eos? Fugit dicta similique maiores necessitatibus, odit est aspernatur, natus eveniet, iure provident quidem officia saepe amet distinctio molestiae impedit nostrum vero!
-                Perferendis adipisci ex maxime repellat quidem? Obcaecati quisquam corporis minima repellat autem, dolorem voluptatibus. Repudiandae aut voluptas similique sequi voluptates odit hic quibusdam rerum facilis iure quas, sint quidem nemo.
-                Non, dicta a. Porro eum illo cumque minima nesciunt in minus culpa harum, deleniti, sapiente, aspernatur omnis dolor id amet nam eius recusandae dolores dolorum quod repudiandae veritatis eligendi vero!
-                Id nihil ducimus perspiciatis iste soluta assumenda recusandae aut autem accusamus, voluptate expedita tempore, at numquam sint veritatis? Laborum dolores excepturi voluptatum tenetur praesentium totam nobis enim aspernatur ullam est.
-                Nihil, quia illum eligendi ab ut iusto nostrum accusantium, veritatis suscipit vero, architecto in. Explicabo sapiente minus magni nam quo voluptas dolores sunt tenetur tempore? Repellat, amet. Ullam, repellat quam?
-                Quae repellendus veritatis porro minima nostrum in a nulla, quaerat eligendi laudantium ipsa, incidunt tempore ab earum voluptas sit numquam soluta quis qui, nesciunt non. Libero nulla ex cupiditate aut!   
-            </p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
+            <img src="{{ article.image }}" alt="">
+            {{ article.content | raw }}
+            <a href="{{ path('blog_show', {'id' : article.id})}}" class="btn btn-primary">Lire la suite</a>
         </div>
     </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metada">Ecrit le 10/05/2018 à 19:00 dans la catégorie Politique</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>
-                Cum dolor quos consectetur voluptatem fugit, architecto aperiam non provident ab, praesentium delectus. Pariatur incidunt quia dolorum dignissimos minus amet, vero consequatur, explicabo, deleniti saepe sapiente beatae qui quo officia!
-                Cum dolore magni libero molestiae? Aperiam mollitia hic cum voluptatibus molestias magnam? Adipisci repellendus ex placeat aliquam quasi delectus hic necessitatibus. Illum voluptatem accusamus ut excepturi quis obcaecati quod nisi.
-                Nobis architecto culpa in libero incidunt non delectus quae reiciendis voluptatibus corrupti cum provident debitis doloribus, odio illum nam expedita asperiores quo, temporibus hic earum quasi, iure magnam. Mollitia, ab.
-                Aut quae consectetur fugiat quasi, aliquam corporis. Id consectetur incidunt nostrum mollitia voluptates perspiciatis laboriosam tenetur commodi tempora, quo cum veritatis cumque ex autem voluptas possimus voluptatibus, quidem delectus totam.
-                Nostrum molestias illum eaque. Dolorem, soluta iusto? Debitis quasi alias nostrum accusamus, ducimus blanditiis, rem placeat laborum neque earum laboriosam molestiae voluptatibus dolorum dolor magni, cupiditate soluta rerum dolore veniam.
-                Magni, maiores deleniti in amet quidem error odio nesciunt necessitatibus mollitia iure! Sint ullam reiciendis debitis. Voluptatibus animi inventore, quidem consequatur consectetur quod laboriosam repudiandae beatae minus impedit. Atque, magni.
-                Magnam at assumenda officia neque rerum culpa architecto omnis, sequi quis ab eius facere blanditiis doloremque sint. Iusto, ab voluptate minima dolorem repudiandae perspiciatis soluta vel enim natus tenetur magni?             
-            </p>
-            <p>
-                Porro a nostrum dicta accusantium, minus, maiores ipsam omnis iusto necessitatibus exercitationem, aliquam laudantium quaerat provident quas dignissimos possimus aspernatur repellendus! Placeat iusto ipsa neque dolores quaerat distinctio tempore sequi.
-                Atque dolore sint earum cumque explicabo debitis qui nostrum facere temporibus? Facilis odio tenetur numquam minus aut quo dignissimos unde at nam! Quidem neque placeat veritatis delectus explicabo itaque aut!
-                Est consequatur fugiat molestiae dicta, voluptatibus exercitationem recusandae sit dolor dolorum dignissimos enim ipsum numquam velit. Neque perspiciatis voluptatibus reiciendis quos illo eos asperiores provident, a odit, dolorum suscipit magni?
-                Modi architecto, harum odio numquam repudiandae repellat necessitatibus autem obcaecati perspiciatis, accusamus maxime, quisquam minima? Quaerat voluptas nihil magni repudiandae quis maxime magnam quibusdam, tenetur eligendi hic aut, tempora dicta.
-                Ad similique voluptas vero aspernatur voluptatem quod dignissimos vel cumque quia. Error blanditiis, sequi, nisi recusandae dolorem laboriosam tenetur dicta culpa commodi itaque possimus accusantium ea quidem quam assumenda veniam.
-                Placeat doloribus consequuntur iste dolor, beatae nam! Assumenda provident perferendis maxime culpa laudantium magni illo doloribus, eos vel velit? Optio nisi dolorum tempore iste amet ullam blanditiis perspiciatis excepturi velit.               
-            </p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metada">Ecrit le 10/05/2018 à 19:00 dans la catégorie Politique</div>
-        <div class="content">
-            <img src="http://placehold.it/350x150" alt="">
-            <p>
-                Nulla fugit fugiat facere maxime, ab corporis aperiam? Quidem magni voluptas culpa itaque explicabo. Nisi nulla suscipit qui nobis modi dolore debitis velit! Dolor, illo provident totam debitis alias sunt.
-                Ipsum, repellendus recusandae perspiciatis suscipit dolores ab sunt asperiores fuga dicta, amet ipsam odit aliquam tempora laudantium. Ipsa odit iusto fugiat numquam reprehenderit suscipit vel, architecto dicta, tempore, labore nisi.
-                Quasi ea delectus nemo, alias voluptates soluta unde veniam voluptatibus maxime ullam quo! Provident nihil iste dicta odio iure mollitia perspiciatis fugit! Quod natus animi commodi incidunt cupiditate nulla dolorum?
-                Architecto corrupti ipsa tenetur est unde quasi commodi ipsum quaerat officia magnam quibusdam eius doloremque id sapiente corporis, quo delectus recusandae ullam, consequuntur nesciunt repellat eaque qui! Delectus, modi asperiores!
-                Totam earum, suscipit ullam expedita et dolores quaerat eaque amet at animi dolorem corrupti saepe quibusdam iusto culpa sit, alias aliquam? Architecto voluptatem officia repellendus, dignissimos porro perspiciatis inventore natus!
-                Ad itaque ducimus numquam cumque sequi saepe quasi? Maiores vel pariatur quis mollitia dolorem. Odio, ipsam. Ratione fugiat natus, ipsa temporibus autem neque doloribus expedita, fugit nesciunt magni sit dignissimos?
-               
-            </p>
-            <p>
-                Optio porro magni dolorum velit dignissimos sed cupiditate alias autem unde, praesentium distinctio minus amet, libero nobis id blanditiis aliquam enim consequuntur impedit necessitatibus ipsa suscipit nam hic. Cupiditate, atque.
-                Dicta magnam laudantium, quod laboriosam distinctio nihil reprehenderit non porro, sit officia assumenda et dolor vero facilis consequuntur neque sed, fuga asperiores ut ipsam! Temporibus velit facilis quasi. Eum, inventore!
-                Est possimus veniam iusto, dolorum quo porro vel a id iure adipisci, dolores obcaecati rem atque minus, recusandae maxime? Quam quasi assumenda sed deleniti amet possimus a maxime aspernatur hic.
-                Modi, suscipit, optio esse tempora tempore a vitae sint cupiditate illo ullam natus? Dolorem similique eius nihil tempore illum necessitatibus dolore voluptas inventore amet tenetur cumque aliquam adipisci, culpa fugiat!
-                Perferendis porro eius iste eveniet numquam assumenda? Dolorem quam nemo saepe soluta incidunt esse? Officia, culpa in dolorem dolor saepe error ex, quos esse repellendus ducimus sed deleniti quod quae.
-                Error cumque explicabo corrupti ab consectetur ratione alias, culpa at repellat, libero sequi nihil quaerat minima suscipit esse magni illo architecto reiciendis ex dolorum a ullam veritatis facere! Et, possimus.
-            </p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
+   {% endfor %}
 </section>
 {% endblock %}
 

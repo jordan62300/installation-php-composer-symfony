@@ -268,6 +268,97 @@ _La commande qui permet d'envoyer les données:_
 > php bin/console doctrine:fixtures:load
 
 
+### Exploiter les données de la BDD
+
+Pour faire des selections nous avons besoin d'un repository
+Pour faire des manipulations nous avons besoin d'un manager
+
+Pour avoir accès au repository dans le controller pour selectionner les données nous créeons dans le fichier du controller ( ici BlogController.php) une variable repo et on récupere le repository
+
+```PHP
+ $repo = $this->getDoctrine()->getRepository(Article::class);
+ ```
+
+ Ne pas oublier de mettre l'accès a la class
+
+ ```PHP
+ use App\Entity\Article;
+ ```
+
+ Pour trouver un article en particulier
+
+ici on cherche l'article 10
+ ```PHP
+ $article = $repo->find(10)
+ ```
+Ou pour trouver un article ayant le titre correspondant
+  ```PHP
+ $article = $repo->findOneByTitle('Titre de l\'article');
+ ```
+
+Ou trouver les articles ayant le titre correspondant
+  ```PHP
+ $article = $repo->findTitle('Titre de l\'article');
+ ```
+
+ Ou pour selectionner tous les articles
+
+  ```PHP
+ $article = $repo->findAll();
+ ```
+
+
+ Pour afficher le rendu , on utilise twig :
+
+ ```Twig
+    {% for article in articles}
+    <h1> {articles.title} </h1>
+    {% endfor %}
+ ```
+
+Une exeption pour la date qui n'est pas une donnée primitive :
+
+ ```Twig
+    {% for article in articles}
+    <h1> {articles.title} </h1>
+    <div class="metada">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+    {% endfor %}
+ ```
+
+ Ainsi que pour le contenu (securité de twig) : 
+
+ ```Twig
+    {% for article in articles}
+    <h1> {article.title} </h1>
+    <div class="metada">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+
+    {{ article.content | raw }}
+    {% endfor %}
+ ```
+
+ Pour obtenir l'identifiant de l'article que nous voulons voir on va dans le controller et on ajoute a la route l'id et on la fait passer en paramettre dans la fonction
+
+ ```PHP
+    /**
+ * @Route("/blog/{id}", name="blog_show")
+ */
+
+public function show($id) {
+    $repo = $this->getDoctrine()->getRepository(Article::class);
+    $article = $repo->find($id);
+    return $this->render('blog/show.html.twig', [
+        'article' => $article,
+    ]);
+}
+ ```
+
+ Ne pas oublier de modifier le chemin du bouton pour ajouter l'id de l'article 
+
+ ```Twig
+  <a href="{{ path('blog_show', {'id' : article.id})}}" class="btn btn-primary">Lire la suite</a>
+  ```
+
+  
 
 
 
