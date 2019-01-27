@@ -201,6 +201,20 @@ Cela creer deux fichier :
 * src/Entity/Article.php qui représente notre table
 * src/Repository/ArticleRepository.php qui permert de faire des selections sur nos tables
 
+Ajoutez ensuite vos champs un par un et définissez ses propriétés , exemple : title 
+
+#### Migration
+
+Migrer notre entity pour ajouter la table et ses données dans phpmyadmin 
+
+Creer la version :
+
+> php bin/console make:migration
+
+Faire la migration 
+
+> php bin/console doctrine:migrations:migrate
+
 
 
 
