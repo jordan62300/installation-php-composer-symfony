@@ -57,7 +57,7 @@ Pour lancer le serveur
 * Controller : Pour gerer le traitement
 * Twig : Pour gerer le rendu
 
-###Controller
+### Controller
 
 Pour creer un controller tapez : 
 
@@ -73,6 +73,17 @@ Cette commande va creer :
 * Un fichier BlogController.php dans le dossier src/Controller
 
 Vous pouvez maintenant acceder a la page localhost:8000/blog 
+
+#### Changer la page d'accueil du projet
+
+Dans le controller que vous venez de creer ajoutez : 
+
+>   /**
+ * @Route("/", name="home")
+ */
+public function home() {
+    return $this->render('blog/home.html.twig');
+}
 
 
 
