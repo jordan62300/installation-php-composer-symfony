@@ -51,7 +51,30 @@ Pour lancer le serveur
 
 > php bin/console server:run
 
-## utilisation de symfony
+## Utilisation de symfony
+
+* Doctrine : Pour gerer l'accès aux données
+* Controller : Pour gerer le traitement
+* Twig : Pour gerer le rendu
+
+###Controller
+
+Pour creer un controller tapez : 
+
+> php bin/console make:controller
+
+Puis choissisez un nom de class pour votre controller , exemple : 
+
+>BlogController
+
+Cette commande va creer : 
+
+* Un dossier dans blog ayant un fichier .twig dans le dossier templates
+* Un fichier BlogController.php dans le dossier src/Controller
+
+Vous pouvez maintenant acceder a la page localhost:8000/blog 
+
+
 
 
 
