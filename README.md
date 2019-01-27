@@ -215,7 +215,57 @@ Faire la migration
 
 > php bin/console doctrine:migrations:migrate
 
+### Fixture
 
+Pour creer une fixture nous devons installer le composant de creation de fixture :
+
+> composer require orm-fixtures --dev
+
+Puis utiliser fixture :
+
+> php bin/console make:fixtures
+
+Entrez ensuite le nom de votre fixture , exemple : ArticleFixtures
+
+dans le dossier DataFixtures le fichier ArticleFixtures.php se creer
+
+dans ce fichier nous pouvons creer des Articles , ajouter ce code :
+
+```PHP
+use App\Entity\Article;
+
+class ArticleFixtures extends Fixture
+{
+    public function load(ObjectManager $manager)
+    {
+        
+        for($i = 1;$i <= 10; $i++){
+            $article = new Article();
+            $article->setTitle("Titre de l'article n°$i")
+                    ->setContent("<p>Contenu de l'article n°$i</p>")
+                    ->setImage("http://placehold.it/350x150")
+                    ->setCreatedAt(new \DateTime());
+
+            $manager->persist($article);
+        }
+
+        $manager->flush();
+    }
+}
+```
+
+
+Le use permet de savoir ou est la classe dont on fait une instance
+
+Nous pouvons ajouter du contenu grace aux set disponible dans la table se trouvant dans le dossier entity
+
+le $manager->persist($article) permet de faire persister l'article dans le temps
+
+le $manager->flush() permet de faire les requetes sql et de balancer les données dans la table
+
+_La commande qui permet d'envoyer les données:_
+
+> php bin/console doctrine:fixtures:load
 
 
 
