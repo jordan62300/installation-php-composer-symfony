@@ -115,12 +115,27 @@ Pour eviter de devoir mettre le lien de bootstrap dans chaque fichier twig , le 
 
 
 Pour rajouter boostrap mettez le lien de bootstrap dans le fichier base.html.twig
+
 Vous devriez obtenir :
 
 ```Twig
 <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
+```
+
+Pour que les fichiers .twig hérite du fichier .twig de base ( et donc de bootstrap) ajoutez cette ligne de code : 
+
+> {% extends 'base.html.twig' %}
+
+Pour ajoutez du contenue a cette page, ajoutez les blocks qui se trouvent dans le fichier base.html.twig 
+
+exemple :  
+
+```Twig
+{% block body %}
+<h1> Salut </h1>
+{% endblock %}
 ```
 
 
