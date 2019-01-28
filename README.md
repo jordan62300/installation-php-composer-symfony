@@ -40,6 +40,10 @@ Se rendre dans un projet php et taper
 
 > composer create-project symfony/website-skeleton demo
 
+Ne pas oublier de rentrer dans le dossier demo qui vient de se creer 
+
+> cd demo
+
 
 Pour installer un serveur personnalisé 
 
