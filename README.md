@@ -57,6 +57,8 @@ Pour lancer le serveur
 
 ## Utilisation de symfony
 
+## Partie I
+
 * Doctrine : Pour gerer l'accès aux données
 * Controller : Pour gerer le traitement
 * Twig : Pour gerer le rendu
@@ -361,6 +363,65 @@ public function show($id) {
  ```Twig
   <a href="{{ path('blog_show', {'id' : article.id})}}" class="btn btn-primary">Lire la suite</a>
   ```
+
+  ## Partie II
+
+  ### Creation d'une page de creation d'article
+
+  Nous avons besoin de 3 choses 
+
+  * une function public dans un controller
+ ```PHP
+public function create() {
+}
+ ```
+  * Une route qui représente l'adresse permettant d'appeller cette fonctionnalité , ici l'adresse sera donc localhost:8000/blog/new
+
+```PHP
+ /**
+* @Route("/blog/new", name="blog_create")
+*/
+ ```
+  * Et un traitement
+
+ ```PHP
+return $this ->render('blog/create.html.twig')
+ ```
+
+Ce qui nous donne dans le fichier BlogController.php :
+
+```PHP
+  /**
+* @Route("/blog/new", name="blog_create")
+*/
+
+public function create() {
+return $this ->render('blog/create.html.twig');
+}
+```
+
+<aside class="warning">
+Faites attention a ne pas mettre de route trop similaire 
+</aside>
+
+Créons maintenant un fichier create.html.twig dans le dossier blog se trouvant dans template et nous permettant d'afficher du contenue dans la page
+Ne pas oublier de lui faire hérité de la page twig de base (% extends 'base.html.twig' %)
+
+Une fois fait , dans le fichier base.html.twig pour avoir un code plus propre modifiez le lien menant à cette page
+
+Remplacer : 
+
+>  <a class="nav-link" href="/blog/new">Creer un article</a>
+
+Par le nom de la route
+
+>  <a class="nav-link" href="{{ path('blog_create') }}">Creer un article</a>
+
+faites de meme pour la page menant aux articles
+
+
+
+
 
   
 
