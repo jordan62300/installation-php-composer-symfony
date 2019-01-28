@@ -400,9 +400,9 @@ return $this ->render('blog/create.html.twig');
 }
 ```
 
-<aside class="warning">
+
 Faites attention a ne pas mettre de route trop similaire 
-</aside>
+
 
 Créons maintenant un fichier create.html.twig dans le dossier blog se trouvant dans template et nous permettant d'afficher du contenue dans la page
 Ne pas oublier de lui faire hérité de la page twig de base (% extends 'base.html.twig' %)
@@ -418,6 +418,87 @@ Par le nom de la route
 >  <a class="nav-link" href="{{ path('blog_create') }}">Creer un article</a>
 
 faites de meme pour la page menant aux articles
+
+### Creation d'un formulaire symfony
+
+Pour creer un formulaire on utilise la documentation 
+
+https://symfony.com/doc/current/forms.html
+
+Dans la function create on crée d'abord une instance de la class Article pour dire que nous créons un nouveau article 
+
+```PHP
+$article = new Article();
+```
+
+Puis nous créons le formulaire 
+
+```PHP
+$form = $this->createFormBuilder($article)
+             ->add('title')
+             ->add('content')
+             ->add('image')
+             ->getForm();
+
+     return $this ->render('blog/create.html.twig' [
+         'formArticle' => $form->createView()
+     ]);
+```
+
+Puis dans twig nous affichons le formulaire grace a la variable
+
+```Twig
+{{ form(formArticle) }}
+```
+
+Pour changer le type de champ modifier :
+
+```PHP
+->add('content' TextType::class)
+```
+
+et ajouter le use correspondant (trouvable dans la documentation si dessus) pour expliquer d'ou vient TextType
+
+```PHP
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+```
+
+#### Ajouter des attributs aux champs
+
+Pour ajouter d'autres options aux champs ajouter :
+
+```PHP
+->add('title' TextType::class, [
+    'attr' => [
+        'placeholder' => "Titre de l'article",
+        'class" => 'form-control'
+    ]
+])
+```
+
+#### Amélioration du rendu
+
+Dans votre fichier twig nous pouvons utiliser les methodes de twig pour préciser le début et la fin du formulaire :
+
+```Twig
+{{ form_start(formArticle)}}
+
+{{ form_end(formArticle)}}
+```
+
+Puis la méthode form_widget pour faire correspondre les champs aux label :
+
+```Twig
+{{ form_start(formArticle)}}
+
+<div class="form-group">
+    <label for="">Titre</label>
+    {{ form_widget(formArticle.title) }}
+</div>
+
+{{ form_end(formArticle)}}
+```
+
 
 
 

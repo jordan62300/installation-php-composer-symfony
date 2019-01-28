@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class BlogController extends AbstractController
 {
@@ -35,7 +37,30 @@ public function home() {
 */
 
 public function create() {
-return $this ->render('blog/create.html.twig');
+$article = new Article();
+$form = $this->createFormBuilder($article)
+             ->add('title' ,TextType::class , [
+                 'attr' => [
+                     'placeholder' => 'Titre',
+                     'class' => 'form-control'
+                 ]
+             ])
+             ->add('content',TextareaType::class, [
+                 'attr' => [
+                     'placeholder' => 'contenu',
+                     'class' => 'form-control'
+                 ]
+             ])
+             ->add('image',TextType::class, [
+                 'attr' => [
+                     'placeholder' => 'image',
+                     'class' => 'form-control'
+                 ]
+             ])
+             ->getForm();
+return $this ->render('blog/create.html.twig',[
+    'formArticle' => $form->createView()
+]);
 }
 
     /**
