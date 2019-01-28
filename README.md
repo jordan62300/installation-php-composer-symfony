@@ -499,7 +499,9 @@ Puis la méthode form_widget pour faire correspondre les champs aux label :
 {{ form_end(formArticle)}}
 ```
 
-_En cour de creation_
+_En cour de creation , a suivre_
+
+27:30
 
 
 
