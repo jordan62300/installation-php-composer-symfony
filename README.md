@@ -499,10 +499,27 @@ Puis la méthode form_widget pour faire correspondre les champs aux label :
 {{ form_end(formArticle)}}
 ```
 
-_En cour de creation , a suivre_
+Pour ajouter un formulaire bootstrap supprimer les class et ajoutez dans le fichier twig.yaml qui se trouve dans le dossier config/packages
 
-27:30
+> form_themes: ['bootstrap_4_layout.html.twig']
 
+Puis dans le twig en dessous de l'extends
+
+> {% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+Ajoutez le button dans le fichier twig
+
+> <button type="submit" class="btn btn-succes">Ajouter l'article</button>
+
+Simplifier le code dans le controller grace a la function form_row()
+
+Supprimer les attributs dans les functions add , vous devez obtenir ceci
+
+```Twig
+    ->add('title')
+    ->add('content')
+    ->add('image')
+```
 
 
 
