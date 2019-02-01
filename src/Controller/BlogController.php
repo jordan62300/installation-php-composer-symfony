@@ -8,6 +8,8 @@ use App\Entity\Article;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
 {
@@ -37,7 +39,7 @@ public function home() {
 * @Route("/blog/new", name="blog_create")
 */
 
-public function create() {
+public function create(Request $request,ObjectManager $manager) {
 $article = new Article();
 $form = $this->createFormBuilder($article)
              ->add('title')
@@ -45,6 +47,10 @@ $form = $this->createFormBuilder($article)
              ->add('image')
              
              ->getForm();
+
+        $form->handleRequest($request);
+
+        dump($article);
 return $this ->render('blog/create.html.twig',[
     'formArticle' => $form->createView()
 ]);

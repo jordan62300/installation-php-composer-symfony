@@ -521,6 +521,39 @@ Supprimer les attributs dans les functions add , vous devez obtenir ceci
     ->add('image')
 ```
 
+Pour que les requetes atteignent la BDD ajoutez les arguments dans la function 
+
+```PHP
+public function create(Request $request,ObjectManager $manager)
+```
+
+Ainsi que cette ligne permettant de gere la requete 
+
+```PHP
+$form->handleRequest($request);
+```
+
+Ne pas oublier les use a mettre dans le controller
+
+```PHP
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
+```
+
+Verifier si le formulaire et soumis/valide puis
+on ajoute la date actuel au champ CreatedAt
+ensuite on fait persister l'article
+puis on demande au manager de balancer la requete
+
+```PHP
+if($form->isSubmitted() && $form->isValid()) {
+    $article->setCreatedAt(new \DateTime());
+
+    $manager->persist($article);
+    $manager->flush();
+}
+```
+
 
 
 
